@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doxbar - Free Online PDF Tools</title>
+    <title>Toolbar - Free Online PDF Tools</title>
     <meta name="description" content="Every tool you need to work with PDFs in one place. Merge, split, compress, convert, edit, and sign PDFs for free. No installation required.">
     <meta name="keywords" content="PDF tools, merge PDF, split PDF, compress PDF, PDF converter, online PDF editor, free PDF tools">
     <!-- Google Search Console Verification Placeholder -->
@@ -22,6 +22,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <!-- VANTA.js for Animated Backgrounds -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
 
     <!-- Google Analytics Placeholder -->
     <!--
@@ -68,14 +72,21 @@
         header {
             position: sticky;
             top: 0;
-            background: var(--white);
+            background: linear-gradient(135deg, rgba(227, 66, 52, 0.15) 0%, rgba(245, 245, 245, 0.25) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             z-index: 1000;
-            transition: box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             padding: 15px 0;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
         }
 
         header.scrolled {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, rgba(227, 66, 52, 0.25) 0%, rgba(245, 245, 245, 0.35) 100%);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            backdrop-filter: blur(12px);
+            transform: translateY(-100%);
         }
 
         .nav-container {
@@ -111,6 +122,11 @@
 
         .nav-links a:hover {
             color: var(--primary-red);
+            background: linear-gradient(135deg, rgba(0, 0, 255, 0.08) 0%, rgba(0, 255, 239, 0.08) 50%, rgba(255, 102, 204, 0.08) 100%);
+            padding: 8px 12px;
+            border-radius: 6px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
 
         .hamburger {
@@ -129,14 +145,20 @@
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 900;
+            letter-spacing: 0.5px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--text-light);
+            color: #ffffff;
             max-width: 600px;
             margin: 0 auto;
+            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.15);
+            font-weight: 500;
+            letter-spacing: 0.3px;
         }
 
         /* Ads */
@@ -195,8 +217,12 @@
 
         .tool-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary-red);
+            background: linear-gradient(135deg, rgba(0, 0, 255, 0.1) 0%, rgba(0, 255, 239, 0.1) 50%, rgba(255, 102, 204, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 255, 239, 0.15), inset 0 0 20px rgba(255, 102, 204, 0.1);
+            border: 1px solid rgba(0, 255, 239, 0.3);
+            border-color: rgba(255, 102, 204, 0.5);
         }
 
         .tool-icon {
@@ -281,6 +307,11 @@
 
         .footer-col a:hover {
             color: var(--primary-red);
+            background: linear-gradient(135deg, rgba(0, 0, 255, 0.08) 0%, rgba(0, 255, 239, 0.08) 50%, rgba(255, 102, 204, 0.08) 100%);
+            padding: 4px 8px;
+            border-radius: 4px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
 
         .copyright {
@@ -397,7 +428,10 @@
         }
 
         .btn-primary:hover:not(:disabled) {
-            background: var(--primary-hover);
+            background: linear-gradient(135deg, rgba(0, 0, 255, 0.9) 0%, rgba(0, 255, 239, 0.8) 50%, rgba(255, 102, 204, 0.9) 100%);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 24px rgba(0, 255, 239, 0.3), inset 0 0 12px rgba(255, 102, 204, 0.2);
+            transition: all 0.3s ease;
         }
 
         .tool-options {
@@ -505,7 +539,7 @@
             <a href="#" class="logo">
                 <!-- Simple SVG Icon -->
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                doxbar
+                Toolbar
             </a>
             <div class="hamburger" id="hamburger">☰</div>
             <nav class="nav-links" id="nav-links">
@@ -518,7 +552,7 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero reveal">
+    <section class="hero reveal" id="hero-section">
         <h1>Every tool you need to work with PDFs in one place.</h1>
         <p>Merge, split, compress, convert, rotate, unlock and watermark PDFs with just a few clicks. 100% Free, Secure & Client-side.</p>
     </section>
@@ -537,8 +571,8 @@
 
     <!-- About / SEO Content -->
     <section class="about-section reveal" id="about">
-        <h2>About doxbar</h2>
-        <p>doxbar (formerly One Page Tools) is your one-stop solution for all PDF-related tasks. We provide a suite of 27 free online PDF tools that run entirely in your browser. This means your files never leave your device, ensuring maximum privacy and security.</p>
+        <h2>About Toolbar</h2>
+        <p>Toolbar (formerly One Page Tools) is your one-stop solution for all PDF-related tasks. We provide a suite of 27 free online PDF tools that run entirely in your browser. This means your files never leave your device, ensuring maximum privacy and security.</p>
         
         <h3>Why Use Our Tools?</h3>
         <ul>
@@ -558,7 +592,7 @@
     <footer id="footer">
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>doxbar</h4>
+                <h4>Toolbar</h4>
                 <p>The smart choice for PDF management. Secure, fast, and free.</p>
             </div>
             <div class="footer-col">
@@ -586,7 +620,7 @@
             </div>
         </div>
         <div class="copyright">
-            &copy; 2024 doxbar. All Rights Reserved.
+            &copy; 2024 Toolbar. All Rights Reserved.
         </div>
     </footer>
 
@@ -718,9 +752,20 @@
             },
 
             setupListeners: function() {
-                // Header Scroll
+                // Header Hide on Scroll
+                let lastScrollTop = 0;
                 window.addEventListener('scroll', () => {
-                    document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 50);
+                    const header = document.getElementById('main-header');
+                    const currentScroll = window.scrollY;
+                    
+                    if (currentScroll > lastScrollTop && currentScroll > 50) {
+                        // Scrolling DOWN - Hide header
+                        header.classList.add('scrolled');
+                    } else {
+                        // Scrolling UP - Show header
+                        header.classList.remove('scrolled');
+                    }
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
                 });
 
                 // Mobile Menu
@@ -1028,7 +1073,7 @@
                     copiedPages.forEach((page) => mergedPdf.addPage(page));
                 }
                 const pdfBytes = await mergedPdf.save();
-                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "merged_doxbar.pdf" };
+                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "merged_toolbar.pdf" };
             },
 
             async processSplit() {
@@ -1061,7 +1106,7 @@
                 const copiedPages = await newPdf.copyPages(srcPdf, indices);
                 copiedPages.forEach((page) => newPdf.addPage(page));
                 const pdfBytes = await newPdf.save();
-                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "split_doxbar.pdf" };
+                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "split_toolbar.pdf" };
             },
 
             async processCompress() {
@@ -1094,7 +1139,7 @@
                 }
 
                 const pdfBytes = await newPdf.save();
-                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "compressed_doxbar.pdf" };
+                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "compressed_toolbar.pdf" };
             },
 
             async processWatermark() {
@@ -1149,7 +1194,7 @@
                 page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
                 
                 const pdfBytes = await newPdf.save();
-                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "edited_doxbar.pdf" };
+                return { blob: new Blob([pdfBytes], { type: "application/pdf" }), name: "edited_toolbar.pdf" };
             },
 
             async processPdfToWord() {
@@ -1271,7 +1316,21 @@
         };
 
         // Start the App
-        document.addEventListener('DOMContentLoaded', () => app.init());
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+            
+            // Initialize VANTA.BIRDS on Hero Section
+            VANTA.BIRDS({
+                el: "#hero-section",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00
+            });
+        });
     </script>
 </body>
 </html>
