@@ -71,6 +71,52 @@ header.scrolled {
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+}
+
+.rotating-e {
+    position: absolute;
+    left: 55px;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: -25px center;
+    animation: logo_kinetics 2.5s linear infinite;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.e-albania {
+    height: 30px;
+    position: relative;
+    width: 30px;
+    #orbit {
+        animation: logo_kinetics 2.5s linear infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: center center;
+    }
+    #electron {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes logo_kinetics {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.logo-title {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: normal;
+    color: #fff;
+    font-size: 22px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 .nav-links {
@@ -399,10 +445,26 @@ header.scrolled {
 
 /* Footer */
 footer {
-    background: #f9f9f9;
+    background: linear-gradient(135deg, rgba(7, 25, 47, 0.8), rgba(255, 255, 255, 0.8), rgba(209, 60, 80, 0.8));
+    background-size: 400% 400%;
+    animation: gradientMove 5s ease infinite;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 60px 20px 30px;
     margin-top: 80px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .footer-grid {
@@ -417,6 +479,7 @@ footer {
 .footer-col h4 {
     margin-bottom: 20px;
     font-size: 1.1rem;
+    color: black;
 }
 
 .footer-col ul {
@@ -429,7 +492,7 @@ footer {
 
 .footer-col a {
     text-decoration: none;
-    color: var(--text-light);
+    color: black;
 }
 
 .footer-col a:hover {
@@ -439,14 +502,6 @@ footer {
     border-radius: 4px;
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
-}
-
-.copyright {
-    text-align: center;
-    color: #999;
-    font-size: 0.9rem;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
 }
 
 /* Modal */

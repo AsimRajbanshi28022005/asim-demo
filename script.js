@@ -634,27 +634,17 @@ const app = {
     }
 };
 
+// FAQ Toggle Function
+function toggleFaq(element) {
+    const answer = element.nextElementSibling;
+    const toggle = element.querySelector('.faq-toggle');
+    answer.classList.toggle('active');
+    toggle.classList.toggle('active');
+}
+
 // Start the App
 document.addEventListener('DOMContentLoaded', () => {
     app.init();
-// FAQ Toggle Function
-function toggleFaq(element) {
-    const faqItem = element.parentElement;
-    const faqAnswer = faqItem.querySelector('.faq-answer');
-    const toggle = element.querySelector('.faq-toggle');
-    
-    // Close other FAQ items
-    document.querySelectorAll('.faq-item').forEach(item => {
-        if (item !== faqItem) {
-            item.querySelector('.faq-answer').classList.remove('active');
-            item.querySelector('.faq-toggle').classList.remove('active');
-        }
-    });
-    
-    // Toggle current FAQ item
-    faqAnswer.classList.toggle('active');
-    toggle.classList.toggle('active');
-}
 
 // Initialize VANTA.BIRDS on Hero Section
     VANTA.BIRDS({
